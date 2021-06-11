@@ -26,6 +26,6 @@ class VerifyEmailController extends Controller
             event(new Verified($request->user()));
         }
 
-        response()->noContent();
+        return response()->json(null, Response::HTTP_OK);
     }
 }

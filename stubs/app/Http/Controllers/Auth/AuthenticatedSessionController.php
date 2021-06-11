@@ -46,6 +46,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        response()->noContent();
+        return response()->json(null, 200);
+        //return response()->setStatusCode()->json;
+        //return response()->noContent();
     }
 }

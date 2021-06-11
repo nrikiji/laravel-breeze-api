@@ -49,7 +49,7 @@ class NewPasswordController extends Controller
         // the application's home authenticated view. If there is an error we can
         // redirect them back to where they came from with their error message.
         if ($status == Password::PASSWORD_RESET) {
-            response()->noContent();
+            return response()->json(null, Response::HTTP_OK);
         } else {
             return response()->json(['messages' => new MessageBag(['email' => __($status)])], Response::HTTP_INTERNAL_SERVER_ERROR);
         }

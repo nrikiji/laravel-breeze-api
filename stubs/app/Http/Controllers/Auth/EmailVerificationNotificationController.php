@@ -23,6 +23,6 @@ class EmailVerificationNotificationController extends Controller
 
         $request->user()->sendEmailVerificationNotification();
 
-        response()->noContent();
+        return response()->json(null, Response::HTTP_OK);
     }
 }

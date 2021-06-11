@@ -32,7 +32,7 @@ class PasswordResetLinkController extends Controller
         );
 
         if ($status == Password::RESET_LINK_SENT) {
-            response()->noContent();
+            return response()->json(null, Response::HTTP_OK);
         } else {
             return response()->json(['messages' => new MessageBag(['email' => __($status)])], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
