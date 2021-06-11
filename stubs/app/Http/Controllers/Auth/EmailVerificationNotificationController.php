@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 
 class EmailVerificationNotificationController extends Controller
 {
@@ -17,12 +18,11 @@ class EmailVerificationNotificationController extends Controller
     public function store(Request $request)
     {
         if ($request->user()->hasVerifiedEmail()) {
-            response()->make(Response::HTTP_NO_CONTENT);
-            return;
+            return response()->json(['messages' => ['email' => 'Already have an authenticated email.']], Response::HTTP_BAD_REQUEST);
         }
 
         $request->user()->sendEmailVerificationNotification();
 
-        response()->make(Response::HTTP_OK);
+        response()->noContent();
     }
 }

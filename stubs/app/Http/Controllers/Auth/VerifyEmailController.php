@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 
 class VerifyEmailController extends Controller
 {
@@ -18,14 +19,13 @@ class VerifyEmailController extends Controller
     public function __invoke(EmailVerificationRequest $request)
     {
         if ($request->user()->hasVerifiedEmail()) {
-            response()->make(Response::HTTP_NO_CONTENT);
-            return;
+            return response()->json(['messages' => ['email' => 'Already have an authenticated email.']], Response::HTTP_BAD_REQUEST);
         }
 
         if ($request->user()->markEmailAsVerified()) {
             event(new Verified($request->user()));
         }
 
-        response()->make(Response::HTTP_OK);
+        response()->noContent();
     }
 }
