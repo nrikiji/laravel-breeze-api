@@ -136,47 +136,47 @@ ResetPassword::createUrlUsing(function ($user, string $token) {
 
 User Registration
 ```
-$ curl -X POST -H 'Accept: application/json' http://localhost:8000/api/register -d 'name=hoge' -d 'email=hoge@example.com' -d 'password=password' -d 'password_confirmation=password'                             
+$ curl -v -X POST -H 'Accept: application/json' http://localhost:8000/api/register -d 'name=hoge' -d 'email=hoge@example.com' -d 'password=password' -d 'password_confirmation=password'                             
 {"token":"1|xxxxxxxxxx"}
 ```
 
 Resend URL for user email address verification
 ```
-curl -X POST -H 'Accept: application/json' -H 'Authorization: Bearer 1|xxxxxxxxxx' "http://localhost:8000/api/email/verification-notification"
+curl -v -X POST -H 'Accept: application/json' -H 'Authorization: Bearer xxxxxxxxxx' "http://localhost:8000/api/email/verification-notification"
 ```
 
 User email address verification  
 *The endpoint is determined from the URL in the body of the email.
 ```
-$ curl -X GET -H 'Accept: application/json' -H 'Authorization: Bearer 1|xxxxxxxxxx' "http://localhost:8000/api/verify-email/123/yyyyyyyyyy?expires=1623304571&signature=zzzzzzzzzz"
+$ curl -v -X GET -H 'Accept: application/json' -H 'Authorization: Bearer xxxxxxxxxx' "http://localhost:8000/api/verify-email/123/yyyyyyyyyy?expires=1623304571&signature=zzzzzzzzzz"
 ```
 
 Login
 ```
-$ curl -X POST -H 'Accept: application/json' http://localhost:8000/api/login -d 'email=hoge@example.com' -d 'password=password' 
+$ curl -v -X POST -H 'Accept: application/json' http://localhost:8000/api/login -d 'email=hoge@example.com' -d 'password=password' 
 {"token":"3|xxxxxxxxxx"}
 ```
 
 User information
 ```
-$ curl -X GET -H 'Accept: application/json' -H 'Authorization: Bearer 1|xxxxxxxxxx' http://localhost:8000/api/user
+$ curl -v -X GET -H 'Accept: application/json' -H 'Authorization: Bearer xxxxxxxxxx' http://localhost:8000/api/user
 {"id":1,"name":"hoge","email":"hoge@example.com","email_verified_at":null,"created_at":"2021-06-10T02:34:45.000000Z","updated_at":"2021-06-10T02:34:45.000000Z"}
 ```
 
 Logout
 ```
-$ curl -X POST -H 'Accept: application/json' -H 'Authorization: Bearer 1|xxxxxxxxxx' http://localhost:8000/api/logout
+$ curl -v -X POST -H 'Accept: application/json' -H 'Authorization: Bearer xxxxxxxxxx' http://localhost:8000/api/logout
 ```
 
 Password reset
 ```
-$ curl -X POST -H 'Accept: application/json' http://localhost:8000/api/forgot-password -d "email=hoge@example.com"
+$ curl -v -X POST -H 'Accept: application/json' http://localhost:8000/api/forgot-password -d "email=hoge@example.com"
 ```
 
 Password reset2  
 * Get the token from the body of the confirmation email.
 ```
-$ curl -X POST -H 'Accept: application/json' http://localhost:8000/api/reset-password -d "email=hoge@example.com" -d "password=password" -d "password_confirmation=password" -d "token=xxxxxxxxxx"
+$ curl -v -X POST -H 'Accept: application/json' http://localhost:8000/api/reset-password -d "email=hoge@example.com" -d "password=password" -d "password_confirmation=password" -d "token=xxxxxxxxxx"
 ```
 
 ### SPA
