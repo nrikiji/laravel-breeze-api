@@ -137,7 +137,7 @@ ResetPassword::createUrlUsing(function ($user, string $token) {
 User Registration
 ```
 $ curl -v -X POST -H 'Accept: application/json' http://localhost:8000/api/register -d 'name=hoge' -d 'email=hoge@example.com' -d 'password=password' -d 'password_confirmation=password'                             
-{"token":"1|xxxxxxxxxx"}
+{"token":"xxxxxxxxxx"}
 ```
 
 Resend URL for user email address verification
@@ -154,7 +154,7 @@ $ curl -v -X GET -H 'Accept: application/json' -H 'Authorization: Bearer xxxxxxx
 Login
 ```
 $ curl -v -X POST -H 'Accept: application/json' http://localhost:8000/api/login -d 'email=hoge@example.com' -d 'password=password' 
-{"token":"3|xxxxxxxxxx"}
+{"token":"xxxxxxxxxx"}
 ```
 
 User information
