@@ -32,17 +32,17 @@ class InstallCommand extends Command
     {
         // Controllers...
         (new Filesystem)->ensureDirectoryExists(app_path('Http/Controllers/Auth'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/App/Http/Controllers/Auth', app_path('Http/Controllers/Auth'));
+        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/app/Http/Controllers/Auth', app_path('Http/Controllers/Auth'));
 
         // Requests...
         (new Filesystem)->ensureDirectoryExists(app_path('Http/Requests/Auth'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/App/Http/Requests/Auth', app_path('Http/Requests/Auth'));
+        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/app/Http/Requests/Auth', app_path('Http/Requests/Auth'));
 
         // Middleware...
-        copy(__DIR__.'/../../stubs/App/Http/Middleware/HandleAuthApiRequests.php', app_path('Http/Middleware/HandleApiAuthRequests.php'));
+        copy(__DIR__.'/../../stubs/app/Http/Middleware/HandleAuthApiRequests.php', app_path('Http/Middleware/HandleApiAuthRequests.php'));
 
         // Providers...
-        copy(__DIR__.'/../../stubs/App/Providers/AuthServiceProvider.php', app_path('Providers/AuthServiceProvider.php'));
+        copy(__DIR__.'/../../stubs/app/Providers/AuthServiceProvider.php', app_path('Providers/AuthServiceProvider.php'));
 
         // Tests...
         (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/tests/Feature', base_path('tests/Feature'));
